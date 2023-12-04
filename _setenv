@@ -1,0 +1,20 @@
+#include "main.h"
+/* _setenv - sets environment varriable
+ * @params: paramaters
+ *
+ * Return: Always 0
+ */
+
+void _setenv(param_t *params)
+{
+        if (params->args[1] == NULL || params->args[2] == NULL)
+        {
+                write(STDERR_FILENO, "Usage: setenv VAR VALUE\n", 23);
+                return;
+        }
+
+        if (setenv(params->args[1], params->args[2], 1) != 0)
+        {
+                write(STDERR_FILENO, "Error setting environment variable\n", 35);
+        }
+}

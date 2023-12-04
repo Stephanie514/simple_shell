@@ -1,0 +1,31 @@
+/**
+ * get_builtin - finds built-in function
+ * @params: pointer to the param_t struct with command parameters
+ *
+ * Description: Searches for a built-in function from 1st argument
+ * in the param_t struct.
+ *
+ * Return: Function pointer to the built-in function. NULL if not found. */
+
+void (*get_builtin(param_t *params))(param_t *)
+{
+        op_t ops[] = {
+                {"exit", _Exit},
+                {"clear", _clear},
+                {"env", _printenv},
+                {"setenv", _setenv},
+                {"cd", _cd},
+                {"unsetenv", _unsetenv},
+                {"alias", _alias},
+                {NULL, NULL},
+        };
+        op_t *op = ops;
+
+        while (op->name)
+        {
+                if (!_strcmp(params->userinput_cpy[0], op->name))
+                        return (op->func);
+                op++;
+        }
+        return (NULL);
+}

@@ -1,0 +1,10 @@
+#include "main.h"
+#include <stdlib.h>
+/**
+ * repl_exit -  exits the shell
+ */
+
+void repl_exit(int exit_status)
+{
+	exit(exit_status);
+}
